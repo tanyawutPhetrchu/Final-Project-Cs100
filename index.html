@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Cs100</title>
+    <!--เปลี่ยนเป็นเวอร์ชัั่น 5.3.8 มีบางlayoutที่ยังมีปัญหา-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Redaction+35:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color: #FEF3E2;">
+    <nav class="navbar navbar-expand-md position-sticky px-3" style="background-color: #D4621A;">
+        <div class="container-fluid">
+
+            <a href="#" class="navbar-brand text-light">Power Up</a>
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link text-light">Home</a>
+                </li>
+                <li class="nav-item">
+                    <!--ใส่id ของ form-->
+                    <a href="#form-sec" class="nav-link text-light">My Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#footer" class="nav-link text-light">Contract</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+    <main>
+        <section class="container-fluid vh-custom" id="home">
+            <div class="row ">
+                <div class="col-12 text-center margin-custom">
+                    <h1>Bulit your own <br>Portfolio</h1>
+                </div>
+                <div class="col-12 text-center mt-5">
+                    <!--ใส่ id form-->
+                    <a href="#form-sec"
+                        class="bg-warning p-3 rounded-pill text-decoration-none fs-5 text-dark shadow-sm ">Create
+                        portfolio</a>
+                </div>
+            </div>
+        </section>
+        <!--ทำform ที่section นี้-->
+        <section class="container-fluid" id="form-sec"></section>
+
+        <footer class="container-fluid py-5 " id="footer" style="background-color: #2A1A0E;">
+            <div class="d-flex justify-content-between px-4">
+                <div class="flex flex-column text-light">
+                    <div class="name">ลัทธพล แพทย์จันลา</div>
+                    <div class="email">latthaphol.phe@dome.tu.ac.th</div>
+                    <div class="id">6909686286</div>
+                </div>
+
+                <!--copy and pastเขียนชื่อ อีเมล และ รหัสนศ-->
+
+                <div class="d-flex justify-content-between px-4">
+                    <div class="flex flex-column text-light">
+                        <div class="name">name</div>
+                        <div class="email">email@dome</div>
+                        <div class="id">id</div>
+                    </div>
+
+
+
+                </div>
+
+        </footer>
+    </main>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
