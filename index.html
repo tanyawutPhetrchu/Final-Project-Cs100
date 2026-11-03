@@ -18,7 +18,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Kodchasan:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
         rel="stylesheet">
-    
+
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -59,7 +59,50 @@
             </div>
         </section>
         <!--ทำform ที่section นี้-->
-        <section class="container-fluid" id="form-sec"></section>
+        <section class="container-fluid" id="form-sec">
+            <div class="container my-5 p-4 bg-white rounded shadow-sm" style="max-width: 900px;">
+                <h2 class="mb-4 text-center fw-bold" style="color: #D4621A;">Create Your Portfolio</h2>
+
+                <!-- ใช้ id "item-form" ตามที่ต้องใช้เขียน JavaScript ดึงข้อมูล -->
+                <form id="item-form">
+
+                    <!-- ส่วนที่ 1: ข้อมูล Portfolio Profile -->
+                    <h4 class="mb-3 border-bottom pb-2">1. User Profile</h4>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label for="profileName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="profileName" name="profileName" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email"
+                                placeholder="email@dome.tu.ac.th" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="studentId" class="form-label">Student ID</label>
+                            <input type="text" class="form-control" id="studentId" name="studentId" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="whatIEnjoy" class="form-label">What I Enjoy</label>
+                            <input type="text" class="form-control" id="whatIEnjoy" name="whatIEnjoy" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="whatITried" class="form-label">What I've Tried</label>
+                            <input type="text" class="form-control" id="whatITried" name="whatITried" required>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <label for="whatICurious" class="form-label">What I'm Curious About</label>
+                            <input type="text" class="form-control" id="whatICurious" name="whatICurious" required>
+                        </div>
+                    </div>
+
+        </section>
 
         <footer class="container-fluid py-5 " id="footer" style="background-color: #2A1A0E;">
             <div class="d-flex justify-content-between px-4">
