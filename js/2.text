@@ -1,1 +1,4 @@
 แปะไว้เฉยๆเผื่อได้ใช้
+Porfolio Item: id="item-form"
+Validation: ใส่ required, type="date", type="url" 
+ดักเบื้องต้นไว้แล้ว ฝากเขียน JS ดักการแจ้งเตือนตอน submit กรณีที่ผู้ใช้กรอกผิดรูปแบบด้วย
