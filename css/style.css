@@ -1,5 +1,10 @@
 /* css defualt */
-
+:root {
+  --dark: #2A1A0E;
+  --accent: #D4621A;
+  --secondary: #F4AE52;
+  --light: #FEF3E2;
+}
 
 
 * {
@@ -10,6 +15,7 @@
 
 
 body {
+    background-color: var(--light);
     font-family: "Roboto Slab", serif  ,"Kodchasan", sans-serif;
     font-optical-sizing: auto;
     font-weight: auto;
