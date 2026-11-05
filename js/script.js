@@ -18,31 +18,61 @@ function render() {
         const p = data[studentId].profile;
 
         html += `
-        <div class="card mb-4">
-            <div class="card-header text-white" style="background-color:#D4621A;">
-                <b>${p.name}</b> (${p.studentId}) - ${p.email}
+        <div class="card mb-5 shadow border-0 rounded-4 overflow-hidden">
+            <div class="card-header text-white p-3 fw-bold fs-5" style="background-color:#D4621A;">
+                👤 ${p.name} <span class="fw-normal fs-6">(${p.studentId})</span> - <span class="fw-light">${p.email}</span>
             </div>
-            <div class="card-body">
-                <p><b>What I Enjoy:</b> ${p.whatIEnjoy}</p>
-                <p><b>What I've Tried:</b> ${p.whatITried}</p>
-                <p><b>What I'm Curious About:</b> ${p.whatICurious}</p>
-                <div class="row g-3">`;
+            <div class="card-body p-4 bg-light">
+                <!-- ส่วน User Profile แบบกล่องข้อความแยกย่อย -->
+                <div class="row g-2 mb-4">
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded bg-white h-100 shadow-sm">
+                            <span class="text-muted small fw-bold d-block mb-1"> WHAT I ENJOY</span>
+                            <span>${p.whatIEnjoy}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded bg-white h-100 shadow-sm">
+                            <span class="text-muted small fw-bold d-block mb-1"> WHAT I'VE TRIED</span>
+                            <span>${p.whatITried}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="p-3 border rounded bg-white h-100 shadow-sm">
+                            <span class="text-muted small fw-bold d-block mb-1"> WHAT I'M CURIOUS ABOUT</span>
+                            <span>${p.whatICurious}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="mb-4 text-secondary">
+                <h5 class="fw-bold mb-3" style="color: #D4621A;"> Portfolio Items</h5>
+                <div class="row g-4">`;
 
         for (const it of data[studentId].items) {
             html += `
                 <div class="col-md-6">
-                    <div class="border rounded p-3 bg-white h-100">
-                        <h5>${it.title} (${it.id})</h5>
-                        <p>Type: ${it.type} | Date: ${it.date}</p>
-                        <p>Role: ${it.role}</p>
-                        <p>Skills: ${it.skills.join(", ")}</p>
-                        <p>${it.description}</p>
-                        <hr>
-                        <p>What I did: ${it.reflection.whatIDid}</p>
-                        <p>What I learned: ${it.reflection.whatILearned}</p>
-                        <p>Challenge: ${it.reflection.challenge}</p>
-                        <p>Next step: ${it.reflection.nextStep}</p>
-                        <a href="${it.evidence[0]}" target="_blank">Evidence</a>
+                    <div class="border-0 shadow-sm rounded-3 p-4 bg-white h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="fw-bold text-dark m-0">${it.title}</h5>
+                                <span class="badge bg-warning text-dark">${it.id}</span>
+                            </div>
+                            <p class="text-muted small mb-2"><b>Type:</b> ${it.type} &nbsp;|&nbsp; <b>Date:</b> ${it.date}</p>
+                            <p class="mb-1"><b>Role:</b> ${it.role}</p>
+                            <p class="mb-2"><b>Skills:</b> <span class="badge bg-secondary text-light">${it.skills.join("</span> <span class='badge bg-secondary text-light'>")}</span></p>
+                            <p class="text-secondary">${it.description}</p>
+                            
+                            <div class="bg-light p-3 rounded-3 mt-3 border">
+                                <p class="mb-1 small"><b>What I did:</b> ${it.reflection.whatIDid}</p>
+                                <p class="mb-1 small"><b>What I learned:</b> ${it.reflection.whatILearned}</p>
+                                <p class="mb-1 small"><b>Challenge:</b> ${it.reflection.challenge}</p>
+                                <p class="mb-0 small"><b>Next step:</b> ${it.reflection.nextStep}</p>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-end">
+                            <a href="${it.evidence[0]}" target="_blank" class="btn btn-sm text-white fw-bold px-3 py-1" style="background-color: #D4621A;">🔗 View Evidence</a>
+                        </div>
                     </div>
                 </div>`;
         }
@@ -51,7 +81,7 @@ function render() {
     }
 
     if (html === "") {
-        html = "<p>ยังไม่มี Portfolio Item</p>";
+        html = "<p class='text-center text-muted fs-5'>ยังไม่มี Portfolio Item บันทึกไว้</p>";
     }
     listEl.innerHTML = html;
 }
