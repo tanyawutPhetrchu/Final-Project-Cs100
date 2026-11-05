@@ -1,6 +1,25 @@
 const form = document.getElementById("item-form");
 const listEl = document.getElementById("portfolio-list");
 
+function showModal(title, message, isSuccess = false) {
+    const modalTitle = document.getElementById("modalTitle");
+    const modalBody = document.getElementById("modalBody");
+    const modalHeader = document.getElementById("modalHeader");
+
+    modalTitle.textContent = title;
+    modalBody.textContent = message;
+
+    if (isSuccess) {
+        modalHeader.style.backgroundColor = "#28a745";
+    } else {
+        modalHeader.style.backgroundColor = "#D4621A";
+    }
+
+    const modalEl = document.getElementById("statusModal");
+    const modal = new bootstrap.Modal(modalEl);
+    modal.show();
+}
+
 function loadData() {
     return JSON.parse(localStorage.getItem("portfolios")) || {};
 }
@@ -115,19 +134,19 @@ form.addEventListener("submit", function (e) {
         date === "" || role === "" || skills === "" || description === "" ||
         whatIDid === "" || whatILearned === "" || challenge === "" ||
         nextStep === "" || evidence === "") {
-        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง");
+        showModal("กรอกข้อมูลไม่ครบ", "กรุณากรอกข้อมูลให้ครบทุกช่อง", false);
         return;
     }
     if (!email.includes("@")) {
-        alert("Email ต้องมีเครื่องหมาย @");
+        showModal("รูปแบบ Email ไม่ถูกต้อง", "Email ต้องมีเครื่องหมาย @ ", false);
         return;
     }
     if (isNaN(studentId)) {
-        alert("Student ID ต้องเป็นตัวเลขเท่านั้น");
+        showModal("รูปแบบ Student ID ไม่ถูกต้อง", "Student ID ต้องเป็นตัวเลขเท่านั้น", false);
         return;
     }
     if (!evidence.startsWith("http")) {
-        alert("Evidence ต้องเป็นลิงก์ที่ขึ้นต้นด้วย http");
+        showModal("รูปแบบลิงก์ไม่ถูกต้อง", "Evidence ต้องเป็นลิงก์ที่ขึ้นต้นด้วย http ", false);
         return;
     }
 
@@ -177,7 +196,7 @@ form.addEventListener("submit", function (e) {
 
     // 5. แสดงผล
     render();
-    alert("บันทึกแล้ว!");
+    showModal("บันทึกสำเร็จ!", "สร้างและบันทึกข้อมูล Portfolio เรียบร้อยแล้ว", true);
 });
 
 // เปิดหน้าเว็บ / Refresh แล้วแสดงข้อมูลที่เคยบันทึกไว้

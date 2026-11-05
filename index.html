@@ -64,7 +64,7 @@
                 <h2 class="mb-4 text-center fw-bold" style="color: #D4621A;">Create Your Portfolio</h2>
 
                 <!-- ใช้ id "item-form" ตามที่ต้องใช้เขียน JavaScript ดึงข้อมูล -->
-                <form id="item-form">
+                <form id="item-form" novalidate>
 
                     <!-- ส่วนที่ 1: ข้อมูล Portfolio Profile -->
                     <h4 class="mb-3 border-bottom pb-2">1. User Profile</h4>
@@ -134,7 +134,7 @@
                         <label for="description" class="form-label">Description</label>
                         <textarea class="form-control" id="description" name="description" rows="2" required></textarea>
                     </div>
-                    
+
                     <!-- ส่วนที่ 3: Reflection -->
                     <h5 class="mb-3 border-bottom pb-2 mt-5">3. Reflection</h5>
                     <div class="row mb-3">
@@ -195,6 +195,25 @@
                 </div>
             </div>
         </footer>
+
+        <div class="modal fade" id="statusModal" tabindex="-1" aria-labelledby="statusModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow-lg rounded-4 overflow-hidden">
+                    <div class="modal-header text-white" id="modalHeader" style="background-color: #D4621A;">
+                        <h5 class="modal-title fw-bold" id="modalTitle">แจ้งเตือน</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body fs-6 py-4" id="modalBody">
+                        <!-- ข้อความแจ้งเตือนจะแสดงตรงนี้ -->
+                    </div>
+                    <div class="modal-footer bg-light">
+                        <button type="button" class="btn text-white fw-bold px-4 rounded-pill"
+                            style="background-color: #D4621A;" data-bs-dismiss="modal">ตกลง</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
 
