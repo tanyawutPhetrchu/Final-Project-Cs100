@@ -1,13 +1,13 @@
-How to Use the Website
+<h1>How to Use the Website</h1>
 
-Click Create Portfolio.
+-Click Create Portfolio.
 
-Fill in your User information.
+-Fill in your User information.
 
-Fill in your Portfolio Item.
+-Fill in your Portfolio Item.
 
-Fill in your Reflection.
+-Fill in your Reflection.
 
-Finally, click Save Portfolio Item.
+-Finally, click Save Portfolio Item.
 
-Your information will be displayed in Saved Portfolios.
+-Your information will be displayed in Saved Portfolios.
