@@ -201,3 +201,10 @@ form.addEventListener("submit", function (e) {
 
 // เปิดหน้าเว็บ / Refresh แล้วแสดงข้อมูลที่เคยบันทึกไว้
 render();
+
+// ฟังก์ชันสำหรับป้องกัน XSS
+function esc(text) {
+    const d = document.createElement("div");
+    d.textContent = text;
+    return d.innerHTML;
+}

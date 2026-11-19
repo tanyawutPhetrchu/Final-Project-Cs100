@@ -30,10 +30,20 @@ body {
 .vh-custom {
     height: calc(100vh - 120px);
 }
-#home {
+
+ #home {
     background-color: #FEF3E2;
     border-bottom: 4px solid #D4621A;
     margin-bottom: 0;
+
+    min-height: calc(100vh - 58px);
+    display: flex;
+    align-items: center;
+}
+
+ #home .row {
+    width: 100%;
+    margin-bottom: 16rem;
 }
 
 #form-sec {
@@ -48,4 +58,28 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 25px;
+}
+.card { transition: transform 0.2s; }
+.card:hover { transform: translateY(-4px); }
+
+.text-accent { color: var(--accent); }
+
+.btn-hero {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+.btn-hero:hover {
+    transform: translateY(-3px);
+}
+
+.navbar .nav-link:hover { color: var(--secondary) !important; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+#home,
+#form-sec,
+#portfolio-section {
+    scroll-margin-top: 58px;
 }
