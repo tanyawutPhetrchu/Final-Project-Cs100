@@ -28,6 +28,23 @@ function loadData() {
 function saveData(data) {
     localStorage.setItem("portfolios", JSON.stringify(data));
 }
+//ฟังก์ชันดาวน์โหลด JSON
+function downloadJSON(studentId) {
+    const data = loadData();
+    const portfolio = data[studentId];
+    if (portfolio === undefined) return;
+
+    const text = JSON.stringify(portfolio, null, 2);
+    const blob = new Blob([text], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "portfolio-" + studentId + ".json";
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
 
 // แสดงข้อมูลบนหน้าเว็บ
 function render() {
@@ -65,7 +82,12 @@ function render() {
                 </div>
 
                 <hr class="mb-4 text-secondary">
-                <h5 class="fw-bold mb-3" style="color: #D4621A;"> Portfolio Items</h5>
+                <!-- ปุ่มดาวน์โหลด JSON -->
+                <div class="d-flex justify-content-between align-items-center mb-3">
+    <h5 class="fw-bold m-0" style="color: #D4621A;"> Portfolio Items</h5>
+    <button class="btn btn-sm text-white" style="background-color: #D4621A;"
+        onclick="downloadJSON('${p.studentId}')">⬇ Download JSON</button>
+</div>
                 <div class="row g-4">`;
 
         for (const it of data[studentId].items) {
