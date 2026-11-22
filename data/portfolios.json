@@ -1,1 +1,131 @@
-{}
+{
+  "6810001": {
+    "profile": {
+      "name": "Somchai Test",
+      "email": "somchai@dome.tu.ac.th",
+      "studentId": "6810001",
+      "whatIEnjoy": "Cooking and playing guitar",
+      "whatITried": "Building a simple website",
+      "whatICurious": "Artificial Intelligence"
+    },
+    "items": [
+      {
+        "id": "item001",
+        "title": "My First Website",
+        "type": "Course Assignment",
+        "date": "2026-11-22",
+        "role": "Developer",
+        "description": "Created a personal website with Bootstrap",
+        "skills": [
+          "HTML",
+          "CSS"
+        ],
+        "reflection": {
+          "whatIDid": "Built the layout and added a form",
+          "whatILearned": "Responsive design with grid",
+          "challenge": "Making the page fit on mobile",
+          "nextStep": "Improve the colors and spacing"
+        },
+        "evidence": [
+          "https://example.com/my-first-website"
+        ]
+      },
+      {
+        "id": "item002",
+        "title": "<b>hello</b>",
+        "type": "Course Assignment",
+        "date": "2026-11-22",
+        "role": "Developer",
+        "description": "Created a personal website with Bootstrap",
+        "skills": [
+          "HTML",
+          "CSS"
+        ],
+        "reflection": {
+          "whatIDid": "Built the layout and added a form",
+          "whatILearned": "Responsive design with grid",
+          "challenge": "Making the page fit on mobile",
+          "nextStep": "Improve the colors and spacing"
+        },
+        "evidence": [
+          "https://example.com/my-first-website"
+        ]
+      },
+      {
+        "id": "item003",
+        "title": "My First Website",
+        "type": "Course Assignment",
+        "date": "2026-11-22",
+        "role": "Developer",
+        "description": "Created a personal website with Bootstrap",
+        "skills": [
+          "HTML",
+          "CSS"
+        ],
+        "reflection": {
+          "whatIDid": "Built the layout and added a form",
+          "whatILearned": "Responsive design with grid",
+          "challenge": "Making the page fit on mobile",
+          "nextStep": "Improve the colors and spacing"
+        },
+        "evidence": [
+          "https://example.com/my-first-website"
+        ]
+      },
+      {
+        "id": "item004",
+        "title": "My First Website",
+        "type": "Course Assignment",
+        "date": "2026-11-22",
+        "role": "Developer",
+        "description": "Created a personal website with Bootstrap",
+        "skills": [
+          "HTML",
+          "CSS"
+        ],
+        "reflection": {
+          "whatIDid": "Built the layout and added a form",
+          "whatILearned": "Responsive design with grid",
+          "challenge": "Making the page fit on mobile",
+          "nextStep": "Improve the colors and spacing"
+        },
+        "evidence": [
+          "https://example.com/my-first-website"
+        ]
+      }
+    ]
+  },
+  "6810002": {
+    "profile": {
+      "name": "Malee Test",
+      "email": "malee@dome.tu.ac.th",
+      "studentId": "6810002",
+      "whatIEnjoy": "Drawing and reading comics",
+      "whatITried": "Making a pricing card page",
+      "whatICurious": "UX/UI design"
+    },
+    "items": [
+      {
+        "id": "item001",
+        "title": "Pricing Cards",
+        "type": "Mini Exercise",
+        "date": "2026-11-22",
+        "role": "Designer",
+        "description": "Made two pricing cards with a dark theme",
+        "skills": [
+          "Bootstrap",
+          "CSS"
+        ],
+        "reflection": {
+          "whatIDid": "Used card, list-group and data-bs-theme",
+          "whatILearned": "How Bootstrap color modes work",
+          "challenge": "Choosing a readable button color",
+          "nextStep": "Try other card layouts"
+        },
+        "evidence": [
+          "https://example.com/light-bulb"
+        ]
+      }
+    ]
+  }
+}

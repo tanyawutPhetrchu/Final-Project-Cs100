@@ -83,3 +83,12 @@ html {
 #portfolio-section {
     scroll-margin-top: 58px;
 }
+.btn-import {
+    background-color: var(--dark);
+    color: var(--light);
+    transition: transform 0.2s, background-color 0.2s;
+}
+.btn-import:hover {
+    background-color: var(--accent);
+    color: #fff;
+}
