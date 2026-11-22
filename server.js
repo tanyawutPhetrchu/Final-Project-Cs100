@@ -233,6 +233,98 @@ app.post("/api/portfolios", (req, res) => {
         return res.status(500).json({ error: "เกิดข้อผิดพลาดในการบันทึกข้อมูลบน Server" });
     }
 });
+// POST /api/profiles : create or update a profile only (no item)
+app.post("/api/profiles", (req, res) => {
+    try {
+        const profile = req.body || {};
+
+        const requiredFields = ["name", "email", "studentId", "whatIEnjoy", "whatITried", "whatICurious"];
+        for (const field of requiredFields) {
+            if (typeof profile[field] !== "string" || profile[field].trim() === "") {
+                return res.status(400).json({ error: `Please fill in ${field}` });
+            }
+        }
+
+        const email = profile.email.trim();
+        const studentId = profile.studentId.trim();
+
+        if (!email.includes("@")) {
+            return res.status(400).json({ error: "Invalid email format (must contain @)" });
+        }
+        if (!/^\d+$/.test(studentId)) {
+            return res.status(400).json({ error: "Student ID must be numbers only" });
+        }
+
+        const portfolios = readPortfolios();
+        if (!portfolios[studentId]) {
+            portfolios[studentId] = { profile: {}, items: [] };
+        }
+
+        portfolios[studentId].profile = {
+            name: profile.name.trim(),
+            email: email,
+            studentId: studentId,
+            whatIEnjoy: profile.whatIEnjoy.trim(),
+            whatITried: profile.whatITried.trim(),
+            whatICurious: profile.whatICurious.trim()
+        };
+
+        writePortfolios(portfolios);
+        return res.status(201).json({ message: "Profile saved" });
+    } catch (err) {
+        return res.status(500).json({ error: "An error occurred while saving data on the server" });
+    }
+});
+// DELETE /api/portfolios/:studentId : delete a whole portfolio
+app.delete("/api/portfolios/:studentId", (req, res) => {
+    try {
+        const studentId = req.params.studentId;
+        if (!/^\d+$/.test(studentId)) {
+            return res.status(400).json({ error: "Student ID must be numbers only" });
+        }
+
+        const portfolios = readPortfolios();
+        if (!portfolios[studentId]) {
+            return res.status(404).json({ error: "Portfolio not found" });
+        }
+
+        delete portfolios[studentId];
+        writePortfolios(portfolios);
+        return res.json({ message: "Portfolio deleted" });
+    } catch (err) {
+        return res.status(500).json({ error: "Could not delete data on the server" });
+    }
+});
+
+// DELETE /api/portfolios/:studentId/items/:itemId : delete one item
+app.delete("/api/portfolios/:studentId/items/:itemId", (req, res) => {
+    try {
+        const studentId = req.params.studentId;
+        const itemId = req.params.itemId;
+        if (!/^\d+$/.test(studentId)) {
+            return res.status(400).json({ error: "Student ID must be numbers only" });
+        }
+
+        const portfolios = readPortfolios();
+        if (!portfolios[studentId]) {
+            return res.status(404).json({ error: "Portfolio not found" });
+        }
+
+        const items = portfolios[studentId].items;
+        const index = items.findIndex(function (it) {
+            return it.id === itemId;
+        });
+        if (index === -1) {
+            return res.status(404).json({ error: "Item not found" });
+        }
+
+        items.splice(index, 1);
+        writePortfolios(portfolios);
+        return res.json({ message: "Item deleted" });
+    } catch (err) {
+        return res.status(500).json({ error: "Could not delete data on the server" });
+    }
+});
 
 app.listen(PORT, "0.0.0.0", () => {
     ensureDataFile();

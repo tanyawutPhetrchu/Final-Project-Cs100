@@ -96,10 +96,14 @@ async function render() {
                 </div>
 
                 <hr class="mb-4 text-secondary">
-                <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
                     <h5 class="fw-bold m-0" style="color: #D4621A;"> Portfolio Items</h5>
-                    <button class="btn btn-sm text-white" style="background-color: #D4621A;"
-                        onclick="downloadJSON('${esc(p.studentId)}')">⬇ Download JSON</button>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm text-white" style="background-color: #D4621A;"
+                            onclick="downloadJSON('${esc(p.studentId)}')">⬇ Download JSON</button>
+                        <button class="btn btn-sm btn-outline-danger"
+                            onclick="deletePortfolio('${esc(p.studentId)}')">🗑 Delete Portfolio</button>
+                    </div>
                 </div>
                 <div class="row g-4">`;
 
@@ -131,9 +135,13 @@ async function render() {
                         <div class="mt-3 text-end">
                             <a href="${esc(it.evidence[0])}" target="_blank" rel="noopener" class="btn btn-sm text-white fw-bold px-3 py-1" style="background-color: #D4621A;">🔗 View Evidence</a>
                         </div>
-                                                <div class="mt-3">
-                            <button class="btn btn-sm btn-outline-dark"
-                                onclick="copyItemJSON('${esc(studentId)}', '${esc(it.id)}')">📋 Copy Item JSON</button>
+                                                                        <div class="mt-3">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-dark"
+                                    onclick="copyItemJSON('${esc(studentId)}', '${esc(it.id)}')">📋 Copy Item JSON</button>
+                                <button class="btn btn-sm btn-outline-danger"
+                                    onclick="deleteItem('${esc(studentId)}', '${esc(it.id)}')">🗑 Delete Item</button>
+                            </div>
                             <textarea class="form-control mt-2 d-none" rows="6" readonly
                                 id="json-${esc(studentId)}-${esc(it.id)}"></textarea>
                         </div>
@@ -302,6 +310,99 @@ document.getElementById("importBtn").addEventListener("click", async function ()
     document.getElementById("importJson").value = "";
     await render();
     showImportMessage("Import Successful! Close this window and view the new item in Saved Portfolios.", true);
+});
+// Delete one item (ask for confirmation first)
+async function deleteItem(studentId, itemId) {
+    const ok = confirm("Delete item " + itemId + "? This cannot be undone.");
+    if (!ok) return;
+
+    try {
+        const res = await fetch("/api/portfolios/" + studentId + "/items/" + itemId, {
+            method: "DELETE"
+        });
+        const result = await res.json();
+
+        if (!res.ok) {
+            showModal("Delete Failed", result.error, false);
+            return;
+        }
+    } catch (err) {
+        showModal("Failed to Connect to Server", "Please try again later", false);
+        return;
+    }
+
+    await render();
+    showModal("Deleted", "The item was deleted.", true);
+}
+
+// Delete a whole portfolio (ask for confirmation first)
+async function deletePortfolio(studentId) {
+    const ok = confirm("Delete the whole portfolio of Student ID " + studentId + " and all its items? This cannot be undone.");
+    if (!ok) return;
+
+    try {
+        const res = await fetch("/api/portfolios/" + studentId, {
+            method: "DELETE"
+        });
+        const result = await res.json();
+
+        if (!res.ok) {
+            showModal("Delete Failed", result.error, false);
+            return;
+        }
+    } catch (err) {
+        showModal("Failed to Connect to Server", "Please try again later", false);
+        return;
+    }
+
+    await render();
+    showModal("Deleted", "The portfolio was deleted.", true);
+}
+// Save profile only (no item)
+document.getElementById("saveProfileBtn").addEventListener("click", async function () {
+    const profile = {
+        name: document.getElementById("profileName").value.trim(),
+        email: document.getElementById("email").value.trim(),
+        studentId: document.getElementById("studentId").value.trim(),
+        whatIEnjoy: document.getElementById("whatIEnjoy").value.trim(),
+        whatITried: document.getElementById("whatITried").value.trim(),
+        whatICurious: document.getElementById("whatICurious").value.trim()
+    };
+
+    for (const key in profile) {
+        if (profile[key] === "") {
+            showModal("Missing Information", "Please fill in all profile fields", false);
+            return;
+        }
+    }
+    if (!profile.email.includes("@")) {
+        showModal("Invalid Email Format", "Email must contain the @ symbol", false);
+        return;
+    }
+    if (isNaN(profile.studentId)) {
+        showModal("Invalid Student ID Format", "Student ID must be a number", false);
+        return;
+    }
+
+    try {
+        const res = await fetch("/api/profiles", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(profile)
+        });
+        const result = await res.json();
+
+        if (!res.ok) {
+            showModal("Save Failed", result.error, false);
+            return;
+        }
+    } catch (err) {
+        showModal("Failed to Connect to Server", "Please try again later", false);
+        return;
+    }
+
+    await render();
+    showModal("Profile Saved!", "Your profile was saved. You can now add or import items.", true);
 });
 // เปิดหน้าเว็บ / Refresh แล้วแสดงข้อมูลที่เคยบันทึกไว้
 render();
