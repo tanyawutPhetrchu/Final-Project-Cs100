@@ -141,3 +141,12 @@ Open these links in your browser. Both must show "Cannot GET" (error 404), not a
 | POST | `/api/profiles` | Create or update a profile only |
 | DELETE | `/api/portfolios/:studentId` | Delete a whole portfolio |
 | DELETE | `/api/portfolios/:studentId/items/:itemId` | Delete one item |
+
+# How to open website to play Sudoku and useing
+- **Open Website URL:** https://foony.com/games/sudoku-online
+- 1.Create room and setting (No login required)
+- 2.joyroom
+# How to play Challenge (Sudoku)
+- Each Row: Must contain the numbers 1–9 with no duplicates.
+- Each Column: Must contain the numbers 1–9 with no duplicates.
+- Each 3×3 Box: Must contain the numbers 1–9 with no duplicates. 
