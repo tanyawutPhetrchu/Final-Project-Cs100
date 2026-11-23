@@ -1,34 +1,34 @@
 ## How to Use the Website
 
-้<h4>Create Portfolio.</h4>
+้<h2>Create Portfolio.</h2>
 
--Click Create Portfolio.
+- Click Create Portfolio.
 
--Fill in your User information.
+- Fill in your User information.
 
--Fill in your Portfolio Item.
+- Fill in your Portfolio Item.
 
--Fill in your Reflection.
+- Fill in your Reflection.
 
--Finally, click Save Portfolio Item.
+-  Finally, click Save Portfolio Item.
 
 -Your information will be displayed in Saved Portfolios.
 
-้<h4>Import Item Json</h4>
+้<h2>Import Item Json</h2>
 
--Click Import Item
+- Click Import Item
 
--Fill your Student ID on Student ID
+- Fill your Student ID on Student ID
 
--Fill your Json on Json Item
+- Fill your Json on Json Item
 
-<h4> Installation & Run </h4>
+<h2> Installation & Run </h2>
 
 - Install nodeJs
 
-- type "npm install on your terminal "
+- type "npm install " on your terminal 
 
-<h4>Public Ip</h4>
+<h2>Public Ip</h2>
 
 - http://52.87.218.48:3000
 
